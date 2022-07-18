@@ -1,0 +1,58 @@
+This document describes how to run the program
+
+
+Requirements:
+-Python 3
+-Pytorch
+-Pytorch Geometric
+-Pip
+-Numpy
+-Networkx
+-Matplotlib
+-absl
+-random
+-copy
+
+
+Files:
+-UGSLBC: this is the main file that contains the GNN clustering implementation mentioned in the report as well as the Tsitsulin implementation
+-Dataset_creator: this file creates the datasets
+-Network_behaviour: this is the network simulator environment
+
+
+Running:
+To run the program, use the terminal. The normal command is:
+
+$python3 UGSLBC.py
+
+However, because of the large amount of printed lines, it is advised to redirect the output stream to a file.
+Use this command for writing and overwriting in a file:
+
+$python3 UGSLBC.py > output.txt
+
+Use this command for writing and appending in a file:
+
+$python3 UGSLBC.py >> output.txt
+
+Be advised, this will also run the Tsitsulin implementation alongside the one described in the paper.
+
+
+Parameters:
+The program can be run with a multitude of parameters. To use them, append them to the execution command. An example:
+
+$python3 UGSLBC.py >> output.txt --rng_gen_seed=75645 --learning_rate=0.002 --type_dataset=3
+
+The list of parameters:
+--dropout_rate: the dropout rate of the GNN model. Default 0.5.
+--nr_servers: Number of servers for the networks. Default 3.
+--nr_epochs: Number of epochs for training the model. Default 50.
+--learning_rate: Learning rate of the optimizer. Default 0.001.
+--loss_weight: The weight from the loss function. Default 0.03.
+--type_dataset: The dataset to run the GNN on. Default 0. 0=random; 1=dynamic; 3=grid; 5=sparse-dense fixed; 6=net; 8=sparse-dense variable.
+--neuron_multiplier: The multiplier for the neurons of the hidden layer. Default 2.
+--rng_gen_seed: The seed for the random number generator for the networks in the dataset. Default 45678.
+--rng_gnn_seed: The seed for the random number generator for the weights of the GNN model. Default 123.
+--activation_function: The activation function between the layers of the model. Default ReLU.
+--x_reduce: The number of columns of nodes(x-axis) to redistribute. Use only with dataset 8. Default 0
+--y_reduce: The number of rows of nodes(y-axis) to redistribute. Use only with dataset 8. Default 0.
+
